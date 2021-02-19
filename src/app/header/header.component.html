@@ -1,0 +1,18 @@
+<!-- <p>header works!</p> -->
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a href="" class="navbar-brand">Pet Paradise</a></div>
+        <ul class="navbar-nav">
+            <li><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="add" class="nav-link" routerLinkActive="active">Add Pet</a></li>
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="view" class="nav-link" routerLinkActive="active">View Pets</a></li>
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="find" class="nav-link" routerLinkActive="active">Find Pets</a></li>
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="mypet" class="nav-link" routerLinkActive="active">My Pets</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li><span *ngIf="loginService.isUserLoggedIn()" class="navbar-text text-primary">Welcome {{loginService.uname | uppercase}}  Id {{loginService.userId}}</span></li>
+            <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+        </ul>
+    </nav>
+</header>

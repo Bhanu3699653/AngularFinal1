@@ -1,0 +1,14 @@
+<!-- <p>edit works!</p> -->
+
+<div [hidden]="submitted" class="cform" style="text-align: center;">
+    <h4>Thanks for buying a pet in our petShop</h4>
+    <label>By clicking the ok button, you are ready to buy the pet</label>
+    <br><br>
+    
+    <button class="btn btn-success" data-ng-model="button" ng-disabled="checked" (click)="editPet()">Ok</button>&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-success" (click)="cancel()">Cancel</button>
+</div>
+<div [hidden]="!submitted" class="cform" style="text-align: center;">
+    <h3>Thank You Visit Again</h3>
+    <button class="btn btn-success" (click)="okbutton()">Done</button>
+</div>

@@ -1,0 +1,53 @@
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3>Registration Form</h3>
+                <div class="text-danger">{{error1}}</div>
+            </div>
+            <div class="card-body">
+                <form class="form" #registerForm="ngForm" [appMatchPassword]="['password', 'confirmPassword']"
+                    (ngSubmit)="registerForm.form.valid && onSubmit()" novalidate>
+                    <div class=" form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="userModal.username" name="username" placeholder="Enter your Name" #username="ngModel"
+                            required>
+                        <span class="text-danger"
+                            *ngIf="(username.touched || registerForm.submitted) && username.errors?.required">
+                            Name is required
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" [(ngModel)]="userModal.password" placeholder="Enter the Password" name="password"
+                            #password="ngModel" appPasswordPattern required>
+                        <span class="text-danger"
+                            *ngIf="(password.touched || registerForm.submitted) && password.errors?.required">
+                            Password is required
+                        </span>
+                        <span class="text-danger" *ngIf="password.touched && password.errors?.invalidPassword">
+                            Password should contain atleast one number
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" [(ngModel)]="userModal.confirmPassword"
+                            name="confirmPassword" placeholder="Enter the Confirm Password" #confirmPassword="ngModel" required>
+                        <span class="text-danger"
+                            *ngIf="(confirmPassword.touched || registerForm.submitted) && confirmPassword.errors?.required">
+                            Confirm Password is required
+                        </span>
+                        <span class="text-danger"
+                            *ngIf="confirmPassword.touched && confirmPassword.errors?.passwordMismatch">
+                            Passwords doesnot match
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" [disabled]="registerForm.form.invalid">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<!-- <p>mypet works!</p> -->
+
+<h3>List of Owned Pets</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Pet Id</th>
+            <th>Pet Name</th>
+            <th>Date of Birth</th>
+            <th>Breed</th>
+            <th>Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pet of pets | async | paginate:{itemsPerPage: count, currentPage:p}">
+            <td>{{pet.pid}}</td>
+            <td>{{pet.name}}</td>
+            <td>{{pet.dob}}</td>
+            <td>{{pet.breed}}</td>
+            <td>{{pet.gender}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="text-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

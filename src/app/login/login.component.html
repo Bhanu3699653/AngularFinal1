@@ -1,0 +1,34 @@
+<!-- <p>login works!</p> -->
+<div class = "py-5">
+    <div class = "row">
+        <div class = "col-md-6 mx-auto">
+            <span class = "anchor" id ="formLogin"></span>
+        
+            <div class = "card rounded-0">
+ 
+                <div class = "card-body">
+                    <form class = "form">
+
+                        <div class="text-danger">
+                            {{error1}}
+                        </div>
+                        
+                        <div class = "form-group">
+                            <label for ="uname1"> Username</label>
+                            <input type = "text" class = "form-control rounded-0" name = "username" placeholder="Enter the Username" [(ngModel)] = "user.username"
+                            required>
+                        </div>
+                        <div class = "form-group">
+                            <label>Password</label>
+                            <input type = "password" class = "form-control rounded-0" name = "password" placeholder="Enter the Password" [(ngModel)] = "user.password"
+                            required>
+                        </div>
+
+                        <button type = "button" (click) = "checkLogin()" class = "btn btn-success float-left">Login</button>
+                        <button type = "button" (click) = "register()" class = "btn btn-success float-right">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

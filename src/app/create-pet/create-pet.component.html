@@ -1,0 +1,52 @@
+<!-- <p>create-pet works!</p> -->
+<h2>Add Pet to PetShop</h2>
+<div [hidden]="submitted" style="width: 500px;" class="cform">
+    <form (ngSubmit)="onSubmit()" #petform="ngForm">
+        <div class="form-group">
+            <label for="name">Pet Name</label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="pet.name"
+            name="name" #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
+            <small class="text-danger" [class.d-none]="name.valid || name.untouched">Pet Name is required</small>
+        </div>
+        <div class="form-group">
+            <label for="Breed">Breed</label>
+            <input type="text" class="form-control" id="breed" required [(ngModel)]="pet.breed"
+            name="breed" #breed="ngModel" [class.is-invalid]="breed.invalid && breed.touched">
+            <small class="text-danger" [class.d-none]="breed.valid || breed.untouched">Pet Breed is required</small>
+        </div>
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="MALE"
+                [(ngModel)]="pet.gender" #gender="ngModel" required>
+                <label class="form-check-label">Male</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="FEMALE"
+                [(ngModel)]="pet.gender" #gender="ngModel" required>
+                <label class="form-check-label">Female</label>
+            </div>
+            <div *ngIf="gender.invalid && gender.untouched" class="text-danger">
+                Gender is required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" required [(ngModel)]="pet.dob" name="dob" #dob="ngModel"
+            [class.is-invalid]="dob.invalid && dob.touched">
+            <small class="text-danger" [class.d-none]="dob.valid || dob.untouched">Pet Date of Birth is required</small>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" required [(ngModel)]="pet.price" name="price" #price="ngModel"
+            [class.is-invalid]="price.invalid && price.touched">
+            <small class="text-danger" [class.d-none]="price.valid || price.untouched">Price is required</small>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="petform.form.invalid">Submit</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted" class="cform" style="text-align: center;">
+    <h4>Pet is successfully Entered</h4>
+    <button class="btn btn-success" (click)="newPet()">Add</button>
+</div>

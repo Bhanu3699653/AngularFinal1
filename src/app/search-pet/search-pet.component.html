@@ -1,0 +1,56 @@
+<!-- <p>search-pet works!</p> -->
+
+<h3>Search By Pet Name</h3>
+<div style = "width: 300px;" class = "sform">
+    <form (ngSubmit) = "onSubmit()">
+        <div class = "form-group">
+            <label for ="name">Name</label>
+            <input type="text"class="form-control" id="name" required [(ngModel)]="name"  name="name">
+        </div>
+ 
+        <div class = "btn-group">
+            <button type = "submit" class = "btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
+
+<br>
+
+<div [hidden]="!submitted" class="sform">
+    <h4>List of Pets</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pet Id</th>
+                <th>Customer Id</th>
+                <th>Pet Name</th>
+                <th>Date of Birth</th>
+                <th>Breed</th>
+                <th>Gender</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pet of pets | paginate:{itemsPerPage: count, currentPage:p}">
+                <td>{{pet.pid}}</td>
+                <td>{{pet.cid}}</td>
+                <td>{{pet.name}}</td>
+                <td>{{pet.dob}}</td>
+                <td>{{pet.breed}}</td>
+                <td>{{pet.gender}}</td>
+                <td>{{pet.price}}</td>
+                <td>{{pet.status}}</td>
+                <td *ngIf="pet.status=='Available'">
+                    <button (click)="onbutton(pet)" class="btn btn-success">Buy</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+
