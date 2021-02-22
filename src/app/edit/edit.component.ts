@@ -1,3 +1,4 @@
+import { prepareSyntheticListenerFunctionName } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pet } from '../pet';
@@ -20,6 +21,7 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   editPet(){
     let pid = localStorage.getItem("pid");

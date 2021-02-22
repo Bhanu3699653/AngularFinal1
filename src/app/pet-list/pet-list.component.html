@@ -1,36 +1,74 @@
-<!-- <p>pet-list works!</p> -->
-<h3>List of Pets</h3>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Pet Id</th>
-            <th>Customer Id</th>
-            <th>Pet Name</th>
-            <th>Date of Birth</th>
-            <th>Breed</th>
-            <th>Gender</th>
-            <th>Price</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let pet of pets | async | paginate:{itemsPerPage: count, currentPage:p}">
-            <td>{{pet.pid}}</td>
-            <td>{{pet.cid}}</td>
-            <td>{{pet.name}}</td>
-            <td>{{pet.dob}}</td>
-            <td>{{pet.breed}}</td>
-            <td>{{pet.gender}}</td>
-            <td>{{pet.price}}</td>
-            <td>{{pet.status}}</td>
-            <td *ngIf="pet.status=='Available'">
-                <button (click)="onbutton(pet)" class="btn btn-success">Buy</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div [hidden]="!submitted">
+    <h3>List of Pets</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pet Id</th>
+                <th>Pet Name</th>
+                <th>Date of Birth</th>
+                <th>Breed</th>
+                <th>Gender</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pet of pets | async | paginate:{itemsPerPage: count, currentPage:p}">
+                <td>{{pet.pid}}</td>
+                <td>{{pet.name}}</td>
+                <td>{{pet.dob}}</td>
+                <td>{{pet.breed}}</td>
+                <td>{{pet.gender}}</td>
+                <td>{{pet.price}}</td>
+                <td>{{pet.status}}</td>
+                <td *ngIf="pet.status=='Available'">
+                    <button (click)="onbutton(pet)" class="btn btn-success">Buy</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
 
-<div class="text-center">
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+<div [hidden]="submitted">
+    <h3 style="text-align: center;">Pet Details</h3><br>
+    <table style="text-align: center;" class="table table-sm" class="tform">
+        <tr>
+            <td class="td"><span style="font-weight: bold;"> Pet Id</span> </td>
+            <!-- <td>:</td> -->
+            <td class="td1">{{pet1.pid}}</td>
+        </tr>
+        <tr>
+            <td class="td"><span style="font-weight: bold;"> Pet Name</span> </td>
+            <!-- <td>:</td> -->
+            <td class="td1">{{pet1.name}}</td>
+        </tr>
+        <tr>
+            <td class="td"><span style="font-weight: bold;"> Date Of Birth</span> </td>
+            <!-- <td>:</td> -->
+            <td class="td1">{{pet1.dob}}</td>
+        </tr>
+        <tr>
+            <td class="td"><span style="font-weight: bold;"> Breed</span> </td>
+            <!-- <td>:</td> -->
+            <td class="td1">{{pet1.breed}}</td>
+        </tr>
+        <tr>
+            <td class="td"><span style="font-weight: bold;"> Gender</span> </td>
+            <!-- <td>:</td> -->
+            <td class="td1">{{pet1.gender}}</td>
+        </tr>
+        <tr>
+            <td class="td"><span style="font-weight: bold;">Price</span> </td>
+            <!-- <td>:</td> -->
+            <td class="td1">{{pet1.price}}</td>
+        </tr><br>
+        <tr style="text-align: center;">
+            <td><button type="button" style="text-align: center;" class="btn btn-success" (click)="onClick(pet1)">Ok</button></td>
+            <td><button type="button" style="text-align: center;" class="btn btn-success" (click)="onCancel()">Cancel</button></td>
+        </tr>
+    </table><br>
 </div>

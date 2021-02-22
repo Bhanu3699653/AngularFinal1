@@ -1,34 +1,37 @@
-<!-- <p>login works!</p> -->
-<div class = "py-5">
-    <div class = "row">
-        <div class = "col-md-6 mx-auto">
-            <span class = "anchor" id ="formLogin"></span>
-        
-            <div class = "card rounded-0">
- 
-                <div class = "card-body">
-                    <form class = "form">
-
-                        <div class="text-danger">
-                            {{error1}}
-                        </div>
-                        
-                        <div class = "form-group">
-                            <label for ="uname1"> Username</label>
-                            <input type = "text" class = "form-control rounded-0" name = "username" placeholder="Enter the Username" [(ngModel)] = "user.username"
-                            required>
-                        </div>
-                        <div class = "form-group">
-                            <label>Password</label>
-                            <input type = "password" class = "form-control rounded-0" name = "password" placeholder="Enter the Password" [(ngModel)] = "user.password"
-                            required>
-                        </div>
-
-                        <button type = "button" (click) = "checkLogin()" class = "btn btn-success float-left">Login</button>
-                        <button type = "button" (click) = "register()" class = "btn btn-success float-right">Register</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div [hidden]="submitted" style="text-align: center;">
+    <h1>Welcome to Pet Paradise</h1><br><br>
+    <p>Our <span style="font-weight: bold;">PET PARADISE</span> contains a variety of pets and we are selling and buying
+        different kinds of pets.<br> We takes care of all the pets
+        we have buyed. We provide a very fair price to every pet for the customers to buy. <br>And we are giving the
+        reasonable fair amount
+        to the customers who are buying their pets to us.
+    </p>
+    <br>
+    <div>
+        If you are an existing customer, Please login here:
+        <button type="button" class="btn btn-success" (click)="login()">Sign in</button>
+        <br><br>
+        If you are new to our <span style="font-weight: bold;">PET PARADISE</span>, please register here:
+        <button type="button" class="btn btn-success" (click)="register()">Register</button>
     </div>
+</div>
+<div [hidden]="!submitted" class="cform" style="width: 500px;">
+    <h1>Welcome to Pet Paradise</h1>
+    <form (ngSubmit)="checkLogin()" #userform="ngForm">
+        <div class="text-danger">
+            {{error1}}
+        </div>
+        <div class="form-group">
+            <label for="uname1"> Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter the Username"
+                [(ngModel)]="user.username" required>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter the Password"
+                [(ngModel)]="user.password" required>
+        </div>
+
+        <button type="submit" class="btn btn-success float-left">Login</button>
+    </form>
 </div>

@@ -5,3 +5,10 @@ table{
 h3{
     text-align: center;
 }
+td{
+    text-align: left;
+}
+
+.tform{
+    width: 18%;
+}

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('uid',data.uid);
           sessionStorage.setItem('uname',data.username);
           if(data == null){
-            this.error1 = "invalid username or password";
+            this.error1 = "Invalid username or password";
             this.router.navigate(['login']);
           }else{
             this.router.navigate(['view']);
@@ -39,12 +39,17 @@ export class LoginComponent implements OnInit {
         error =>  this.error2 = error
       );
       if(this.error2==null){
-        this.error1 = "invalid username and password";
+        this.error1 = "Invalid username or password";
       }
   }
 
   register() {
     this.router.navigate(['register']);
+  }
+  submitted = false;
+  login(){
+    this.submitted = true;
+    this.router.navigate(['login']);
   }
 
 

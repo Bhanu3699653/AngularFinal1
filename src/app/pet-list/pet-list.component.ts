@@ -13,6 +13,8 @@ export class PetListComponent implements OnInit {
 
   pets: Observable<Pet[]>;
 
+  pet1: Pet = new Pet();
+
   p: Number = 1;
   count: Number = 5;
 
@@ -26,10 +28,20 @@ export class PetListComponent implements OnInit {
     this.pets = this.petService.getPetsList();
   }
 
+  submitted=true;
   onbutton(pet: Pet): void{
+    this.pet1 = pet;
+    this.submitted = false;
+  }
+
+  onClick(pet: Pet){
     console.log("into edit");
     localStorage.setItem("pid",pet.pid.toString());
     this.router.navigate(["edit"]);
+  }
+
+  onCancel(){
+    this.submitted=true;
   }
 
 }

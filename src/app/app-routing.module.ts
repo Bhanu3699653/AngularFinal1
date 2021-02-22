@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'success',component:SuccessComponent},
   {path:'', redirectTo:'view', pathMatch:'full'}
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
