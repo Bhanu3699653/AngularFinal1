@@ -39,11 +39,11 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['success']);
         }
         else{
-          this.error1 = "username already exists";
+          this.error1 = "Username already exists";
           this.userModal = new User();
         }
       },
-      error => this.error1 = "username already exists"
+      error => this.error1 = "Username already exists"
     );  
   }
 

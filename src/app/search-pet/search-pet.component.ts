@@ -17,6 +17,8 @@ export class SearchPetComponent implements OnInit {
   p: Number=1;
   count: Number = 3;
 
+  pet1: Pet = new Pet();
+
   constructor(private petService: PetService, private router: Router) { }
 
   ngOnInit(): void { 
@@ -36,10 +38,22 @@ export class SearchPetComponent implements OnInit {
     );
   }
 
+  submitted1=false;
   onbutton(pet: Pet): void{
+    this.pet1 = pet;
+    this.submitted1 = true;
+    this.submitted = false;
+  }
+
+  onClick(pet: Pet){
     console.log("into edit");
     localStorage.setItem("pid",pet.pid.toString());
     this.router.navigate(["edit"]);
+  }
+
+  onCancel(){
+    this.submitted=true;
+    this.submitted1=false;
   }
   
 

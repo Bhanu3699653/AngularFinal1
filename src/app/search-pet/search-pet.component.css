@@ -5,3 +5,12 @@
 h3,h4{
     text-align: center;
 }
+
+td{
+    text-align: left;
+}
+
+.tform{
+    margin : auto;
+    width: 18%;
+}
